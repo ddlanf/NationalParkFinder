@@ -63,8 +63,8 @@ function watchForm() {
       event.preventDefault();
       const searchTerm = $('#js-search-term').val();
       const maxResults = $('#js-max-results').val();
-      const searchTerms = searchTerm.split(",");
-      checkStates(searchTerms);
+      const searchTerms = searchTerm.replace(", ", ",").split(",");
+      if(searchTerms.length > 1){ checkStates(searchTerms) };
       const splitSearches = [];
       let destributeSearch = maxResults%searchTerms.length;
       if(destributeSearch === 0){     
