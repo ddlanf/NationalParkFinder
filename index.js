@@ -32,11 +32,16 @@ function displayResults(responseJson) {
 };
 
 function getNationalParks(query, maxResults=10) {
-    const params = {
+
+  const params = {
       api_key: apiKey,
-      q: query,
       limit: maxResults,
     };
+    if(query.toUpperCase() === query){
+      params.stateCode = query;
+    }
+    else{ params.q = query;  }
+    
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
     console.log(url);
